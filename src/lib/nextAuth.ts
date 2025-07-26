@@ -4,7 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { PrismaClient, UserRole, MemberType } from '@prisma/client'
 import { compare } from 'bcryptjs'
-import { prisma } from "@/lib/prisma";
+//import { prisma } from "@/lib/prisma";
 
 
 
@@ -28,9 +28,10 @@ declare module 'next-auth/jwt' {
     phoneNumber?: string
   }
 }
-
+const prisma = new PrismaClient()
 export const authOptions: NextAuthOptions = {
   debug: true,
+  
   adapter: PrismaAdapter(prisma) as any,
   providers: [
     CredentialsProvider({
@@ -70,6 +71,9 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      httpOptions: {
+        timeout: 10000 // 10 ثوانٍ بدلًا من 3.5
+      },
       authorization: {
         params: {
           prompt: "consent",
@@ -98,10 +102,10 @@ export const authOptions: NextAuthOptions = {
           if (!existingUser) {
             await prisma.user.create({
               data: {
-                email: user.email!,
                 name: user.name || 'مستخدم جديد',
+                email: user.email!,
                 password: null,
-                phoneNumber: '',
+                phoneNumber: null,
                 memberType: MemberType.NON_MEMBER,
                 role: UserRole.MEMBER,
               },
@@ -111,19 +115,20 @@ export const authOptions: NextAuthOptions = {
           return true
         } catch (error) {
           console.error('Error in signIn callback:', error)
-          return false
+          throw new Error('فشل في تسجيل الدخول بـ Google')
+
         }
       }
     
       return true
     },
     
-    // signIn: async ({ account }) => {
-    //   if (account?.provider === 'google') {
-    //     return true // لا داعي لفعل شيء
-    //   }
-    //   return true
-    // },
+  //   // signIn: async ({ account }) => {
+  //   //   if (account?.provider === 'google') {
+  //   //     return true // لا داعي لفعل شيء
+  //   //   }
+  //   //   return true
+  //   // },
     
     
     // async jwt({ token, user }) {
@@ -134,22 +139,32 @@ export const authOptions: NextAuthOptions = {
     //   }
     //   return token
     // },
-    async jwt({ token, user, account, profile }) {
-      if (user) {
-        token.id = (user as any).id || (token.id ?? token.sub)
+    async jwt({ token, user}) {
+      if(user){
+        const dbUser = await prisma.user.findUnique({
+          where: { email: user.email! }})
+      
+      if (dbUser) {
+        token.id = (user as any).id 
         token.role = (user as any).role || UserRole.MEMBER
         token.memberType = (user as any).memberType || MemberType.NON_MEMBER
-      }
+      }}
       return token
     },
     
     async session({ session, token }) {
       if (session.user && token.id) {
-        session.user.id = token.id
-        session.user.role = token.role
-        session.user.memberType = token.memberType
+        session.user.id = token.id as string
+        session.user.role = token.role as UserRole
+        session.user.memberType = token.memberType as MemberType
       }
       return session
-    }
-  }
+    },
+    redirect({ baseUrl }) {
+      return `${baseUrl}/`;
+    },
+
+    // }
+
+}
 }

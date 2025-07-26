@@ -105,7 +105,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">الهاتف</h4>
-                    <p className="text-gray-600">+966 123 456 789</p>
+                    <p className="text-gray-600">+967 777 444 777</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -114,7 +114,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">البريد الإلكتروني</h4>
-                    <p className="text-gray-600">info@charity-org.sa</p>
+                    <p className="text-gray-600">info@charity-org.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -123,7 +123,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">العنوان</h4>
-                    <p className="text-gray-600">الرياض، المملكة العربية السعودية</p>
+                    <p className="text-gray-600">تعز -الجمهورية اليمنية   </p>
                   </div>
                 </div>
               </div>

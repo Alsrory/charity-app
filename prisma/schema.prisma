@@ -8,8 +8,8 @@ datasource db {
 }
 
 enum UserRole {
-  MEMBER
-  ADMIN
+  MEMBER  //عضو عادي 
+  ADMIN   //مدير
 }
 
 enum MemberType {
@@ -44,19 +44,23 @@ model User {
   updatedAt     DateTime       @updatedAt
 
   payments      Payment[]
+  addpayments   Payment[]@relation("adminAdded")
   notifications Notification[]
 }
 
 model Payment {
   id            String         @id @default(uuid())
-  amount        Float
-  status        PaymentStatus  @default(PENDING)
-  method        PaymentMethod
+  amount        Float           @default(0)
+  status        PaymentStatus?  @default(PENDING)
+  method        PaymentMethod?
   month         Int            // 1 - 12
   year          Int            // YYYY
   receiptUrl    String?
   userId        String
+  addByAdminID   String
+  receiptNumber String?       @default("000000")
   user          User           @relation(fields: [userId], references: [id])
+  addByAdmin    User          @relation("adminAdded",fields: [addByAdminID],references: [id])
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }

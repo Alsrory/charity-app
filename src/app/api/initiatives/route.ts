@@ -23,9 +23,9 @@ import { getServerSession } from 'next-auth';
 export async function GET(req: Request) {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    return NextResponse.json({ error: "غير مصرح" }, { status: 401 });
-  }
+  // if (!session) {
+  //   return NextResponse.json({ error: "غير مصرح" }, { status: 401 });
+  // }
 
   try {
     const initiatives = await prisma.initiative.findMany({

@@ -18,7 +18,27 @@ body {
     @apply w-20  whitespace-normal break-words break-all;
   }
 }
+.navbar-desktop{
+  @apply text-white  hover:text-white text-xl
+}
+.navbar-dropmune{
+  @apply block px-4 py-3  text-white  hover:text-gray-700 hover:bg-white/90   rounded-lg transition-colors duration-200
+}
 
 .secandcolor{
   
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40px;
+  margin: 0 auto;
+}
+.table-member{
+  @apply  p-3 text-right font-sans text-sm md:text-base whitespace-nowrap
 }

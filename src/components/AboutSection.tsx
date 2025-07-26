@@ -4,18 +4,20 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-white to-primary/10 ">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">عن الجمعية</h2>
+        <div className="text-center mb-6 md:mb-6">
+          <h2 className="text-3xl font-bold mb-2">عن الجمعية</h2>
           <div className="h-1 w-24 bg-primary mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0 md:gap-y-14 items-center ">
         <div className="relative w-full h-[400px]">
   <Image
-    src="/images/image.png"
+    src="/Chartiy_Aldohara.png"
     alt="صورة عن الجمعية"
-    fill
-    className="object-cover rounded-lg shadow-xl"
+    width={400} 
+    height={400}
+    
+    className=" mx-auto max-w-[100vh] max-h-[100vh] md:mx-0 object-cover rounded-full shadow-xl "
   />
 </div>
 
@@ -27,7 +29,7 @@ export default function AboutSection() {
               />
             </div> */}
 
-          <div className="text-right space-y-6">
+          <div className=" text-center md:text-right space-y-6 pt-14 md:p-0 ">
             <div>
               <h3 className="text-2xl font-bold mb-4">رؤيتنا</h3>
               <p className="text-gray-600">
@@ -66,7 +68,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
           <div className="bg-primary/5 p-6 rounded-lg text-center">
             <div className="text-4xl font-bold text-primary mb-2">+5000</div>
             <p className="text-gray-600">مستفيد سنوياً</p>

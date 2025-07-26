@@ -1,5 +1,5 @@
 'use client'
-import { Menu, Star, X } from 'lucide-react'
+import { Menu, Star, X, CreditCard,User2Icon ,Newspaper,Projector} from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -9,12 +9,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuItems = [
-    { href: '/dashboard', label: 'الرئيسية' },
-    { href: '/dashboard/news', label: 'إدارة الأخبار' },
-    { href: '/dashboard/members', label: 'إدارة الأعضاء' },
-    { href: '/dashboard/admins', label: 'إدارة المديرين' },
-    { href: '/dashboard/initiatives', label: 'إدارة المبادرات' },
-    { href: '/dashboard/projects', label: 'إدارة المشاريع' },
+    { href: '/dashboard', label: 'الرئيسية',icon:Menu },
+    { href: '/dashboard/news', label: 'إدارة الأخبار',icon:Newspaper },
+    { href: '/dashboard/members', label: 'إدارة الأعضاء',icon:User2Icon },
+    { href: '/dashboard/admins', label: 'إدارة المديرين',icon:User2Icon },
+    { href: '/dashboard/initiatives', label: 'إدارة المبادرات',icon:Projector },
+    { href: '/dashboard/projects', label: 'إدارة المشاريع',icon:Projector },
+    { href: '/dashboard/payments', label: 'دفع الاشتراكات', icon: CreditCard },
   ]
 
   return (
@@ -22,36 +23,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       {/* Mobile Menu Button */}
       <div className="md:hidden bg-white shadow-md">
         <div className="flex gap-x-3 items-center p-4">
-        <button
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100"
           >
-            {isMenuOpen ? < X/> : <Menu />}
-            {/* <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg> */}
+            {isMenuOpen ? <X /> : <Menu />}
           </button>
           <h2 className="text-xl font-bold text-primary">لوحة التحكم</h2>
-         
         </div>
       </div>
 
@@ -61,28 +39,32 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           isMenuOpen ? 'block' : 'hidden'
         } md:block w-80 md:w-64 bg-white shadow-lg fixed md:relative z-50 h-full`}
       >
-        <div className="p-4 md:block flex justify-between items-center">
+        <div className="p-4 md:block flex justify-between items-center border-b-2 border-primary">
           <h2 className="text-xl font-bold text-primary">لوحة التحكم</h2>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100"
           >
-            {isMenuOpen ? < X/> : null}
+            {isMenuOpen ? <X /> : null}
           </button>
         </div>
         <nav className="mt-4">
-          {menuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMenuOpen(false)}
-              className={`block px-4 py-3 text-gray-700 hover:bg-primary/10 ${
-                pathname === item.href ? 'bg-primary/10 text-primary' : ''
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {menuItems.map((item) => {
+            const Icon = item.icon
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center gap-2 px-4 py-3 text-gray-700 hover:bg-primary/10 ${
+                  pathname === item.href ? 'bg-primary/10 text-primary' : ''
+                }`}
+              >
+                {Icon && <Icon size={20} />}
+                {item.label}
+              </Link>
+            )
+          })}
         </nav>
       </div>
 
