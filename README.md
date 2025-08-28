@@ -79,17 +79,7 @@ yarn dev
 
 Open your browser at: **http://localhost:3000**  
 
----
 
-## 🚢 Deployment
-
-You can deploy the app on platforms like **Vercel**:
-
-1. Push the project to GitHub  
-2. Connect the repository to [Vercel](https://vercel.com)  
-3. Vercel will automatically build and deploy your project  
-
----
 
 ## 📂 Project Structure
 
