@@ -5,6 +5,10 @@ const nextConfig = {
       allowedOrigins: ['localhost:3000'],
     },
   },
-};
+  images: {
+    domains: ['localhost'],
+    unoptimized: true,
+  },
+}
 
-module.exports = nextConfig; 
+module.exports = nextConfig

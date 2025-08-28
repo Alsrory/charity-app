@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Charity-App
 
-## Getting Started
+**Charity-App** is a modern charity platform built with **Next.js**.  
+It is designed to provide a responsive and user-friendly interface for managing and exploring charity initiatives.
 
-First, run the development server:
+---
 
+## 📖 Table of Contents
+
+- [About the Project](#about-the-project)  
+- [Features](#features)  
+- [Tech Stack](#tech-stack)  
+- [Installation](#installation)  
+- [Development](#development)  
+- [Deployment](#deployment)  
+- [Project Structure](#project-structure)  
+- [Contributing](#contributing)  
+- [License](#license)
+
+---
+
+## 💡 About the Project
+
+Charity-App is a web application aimed at supporting and showcasing charity initiatives.  
+Built with **Next.js**, it provides fast rendering, SEO optimization, and scalability for future improvements.
+
+---
+
+## 🚀 Features
+
+- Browse charity projects and initiatives  
+- Detailed project pages  
+- Responsive and mobile-friendly design  
+- (Optional) Authentication for users and admins  
+- (Optional) Admin panel for managing initiatives  
+- Easy deployment on platforms like **Vercel**
+
+---
+
+## 🛠 Tech Stack
+
+- **Next.js** — React framework for SSR & SSG  
+- **TypeScript** — type safety and maintainability  
+- **Tailwind CSS** — utility-first styling  
+- **Prisma** *(if enabled)* — database ORM  
+- **ESLint & Prettier** — code quality and formatting  
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Alsrory/charity-app.git
+   cd charity-app
+   ```
+
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
+   or  
+   ```bash
+   yarn
+   ```
+
+---
+
+## 🖥 Development
+
+Start the development server:  
 ```bash
 npm run dev
-# or
+```
+or  
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser at: **http://localhost:3000**  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚢 Deployment
 
-## Learn More
+You can deploy the app on platforms like **Vercel**:
 
-To learn more about Next.js, take a look at the following resources:
+1. Push the project to GitHub  
+2. Connect the repository to [Vercel](https://vercel.com)  
+3. Vercel will automatically build and deploy your project  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+```
+├── public/             # Static assets (images, favicon, etc.)
+├── src/ or app/        # Main application pages and components
+├── prisma/             # Prisma schema & migrations (if used)
+├── README.md           # Project documentation
+├── package.json        # Project scripts & dependencies
+├── tsconfig.json       # TypeScript configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── eslint.config.mjs   # ESLint configuration
+├── next.config.js      # Next.js configuration
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+We welcome contributions!  
+To contribute:  
+1. Fork the repository  
+2. Create a new feature branch (`git checkout -b feature-name`)  
+3. Commit your changes with clear messages  
+4. Push to your fork and submit a Pull Request  
+
+Make sure your code is well-tested and follows project formatting rules.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+Feel free to use, modify, and distribute it as needed.
+
+---

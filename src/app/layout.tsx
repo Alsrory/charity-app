@@ -5,13 +5,12 @@ import Providers from '@/components/Providers'
 import DonateFloatingButton from "../components/DonateFloatingButton";
 import Navbar from '@/components/Navbar';
 
-const inter = Inter({ subsets: ['latin'] })
-const notoSansArabic = Noto_Sans_Arabic({ subsets: ['arabic'] })
 const cairo = Cairo({
-  subsets: ['arabic'], // تضمين مجموعة الأحرف العربية فقط
-  display: 'swap',     // سلوك العرض: تبديل
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900'] // الأوزان التي تريد تضمينها
-});
+  subsets: ['arabic', 'latin'], // أضف latin لو عندك نصوص إنجليزية
+  display: 'swap',
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900']
+})
+
 export const metadata: Metadata = {
   title: 'جمعية التلاحم الخيرية المجتمعية',
   description: 'موقع جمعيةالتلاحم  الخيرية المجتمعية',
@@ -27,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" >
-      <body className={`${cairo.className} ${inter.className} bg-gradient-to-b from-white to-primary/10 font-jannatLT `}>
+      <body className={`${cairo.className} `  }>
         <Providers>
         <Navbar />
           {children}
